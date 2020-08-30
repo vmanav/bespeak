@@ -71,6 +71,56 @@ app.patch('/tickets/:id', (req, res) => {
   });
 })
 
+// Get All Tickets
+app.post('/tickets/search', (req, res) => {
+
+  const timming = req.body.timming;
+  console.log("timming : ", timming);
+
+  Tickets.findAll({
+    where: {
+      timming: timming,
+    }
+  })
+    .then(function (record) {
+      if (record.length == 0) {
+        res.send({
+          "text": "No Tickets Found.",
+          "status": 200
+        })
+      } else {
+        console.log("record : ", record);
+        data = record.map((rcd) => {
+          return rcd.dataValues;
+        })
+        let dataLength = data.length;
+        res.send({
+          "text": "Tickets Found.",
+          "length": dataLength,
+          "data": data,
+          "status": 200
+        })
+      }
+    })
+})
+
+// Delete Ticket
+app.delete('/tickets/:id', (req, res) => {
+
+  let id = req.params.id;
+
+  Tickets.destroy({
+    where: {
+      id: id
+    }
+  }).then(() => {
+    res.send({
+      "text": "Ticket Deleted Succesfully.",
+      "status": 200
+    })
+  })
+})
+
 db.sync().then(() => {
   app.listen(3000, () => {
     console.log("Running @ : http://localhost:3000");

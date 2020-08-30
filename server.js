@@ -9,31 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Home 
 app.get('/', (req, res) => {
-
-
-  // let date = {
-  //   "day": 1,
-  //   "month": 9,
-  //   "year": 2020,
-  //   "hours": 20,
-  //   "minutes": 0
-  // };
-
-
-  // var schedule = new Date();
-  // schedule.setDate(parseInt(date.day));
-  // schedule.setMonth(parseInt(date.month));
-  // schedule.setFullYear(parseInt(date.year));
-  // schedule.setHours(parseInt(date.hours));
-  // schedule.setMinutes(parseInt(date.minutes));
-
-  // console.log("DATE :", schedule);
-
   res.send({
     "text": "Welcome to bespeak, Easy Ticket Booking",
     "status": 200
   })
 })
+
 
 // Ticket Booking
 app.post('/tickets', (req, res) => {
@@ -46,13 +27,32 @@ app.post('/tickets', (req, res) => {
     expired: false,
   }
 
-  Tickets.create(newTicket).then(ticket => {
-    res.send({
-      "text": "Ticket Booked Succesfully",
-      "status": 200
-    })
+  // Find if 20 Tickets already booked ?
+  Tickets.findAndCountAll({
+    where: {
+      timming: newTicket.timming,
+    }
   })
+    .then(function (record) {
+      if (!record || record.count < 20) {
+        // Book Ticket
+        Tickets.create(newTicket).then(ticket => {
+          res.send({
+            "text": "Ticket Booked Succesfully",
+            "status": 200
+          })
+        })
+      }
+      else {
+        // Cannot Book more than 20 Tickets
+        res.send({
+          "text": "Cannot Book more than 20 Tickets",
+          "status": 200
+        })
+      }
+    })
 })
+
 
 // Update Ticket Timming 
 app.patch('/tickets/:id', (req, res) => {
@@ -70,6 +70,7 @@ app.patch('/tickets/:id', (req, res) => {
     }
   });
 })
+
 
 // Get All Tickets
 app.post('/tickets/search', (req, res) => {
@@ -118,6 +119,35 @@ app.delete('/tickets/:id', (req, res) => {
       "text": "Ticket Deleted Succesfully.",
       "status": 200
     })
+  })
+})
+
+// View Details
+app.get('/tickets/:id', (req, res) => {
+
+  let id = req.params.id;
+
+  Tickets.findOne({
+    where: {
+      id: id
+    }
+  }).then((record) => {
+    if (!record) {
+      res.send({
+        "text": "No Ticket Found.",
+        "status": 200
+      })
+    } else {
+      let data = {
+        "name": record.dataValues.name,
+        "number": record.dataValues.number,
+      }
+      res.send({
+        "text": "Ticket User Details.",
+        "data": data,
+        "status": 200
+      })
+    }
   })
 })
 

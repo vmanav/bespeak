@@ -83,6 +83,22 @@ time.
 | timming | DATE  | false | Show Timming |
 | expired | BOOLEAN  | false | Validity |
 
+
+## API Endpoints
+
+|![Home Page](/public/get1.png)|
+|:-------:|
+|*Home Page*|
+![Book Ticket](./public/post2.png)
+|*Book Ticket*|
+![Search Tickets](./public/post1.png)
+|*Search Tickets*|
+![Update Ticket](./public/patch1.png)
+|*Update Ticket*|
+![Get Ticket Details](./public/get2.png)
+|*Get Ticket Details*|
+![Delete Ticket](./public/del1.png)
+|*Delete Ticket*|
 <!-- 
 ## Gallery
 

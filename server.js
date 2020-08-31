@@ -1,4 +1,6 @@
 const express = require('express');
+const Sequelize = require('sequelize');
+
 const app = express();
 const cron = require("node-cron");
 
@@ -6,6 +8,9 @@ const { db, Tickets } = require('./models/db');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const Op = Sequelize.Op
+
 
 // Home 
 app.get('/', (req, res) => {
@@ -15,15 +20,19 @@ app.get('/', (req, res) => {
   })
 })
 
-// schedule Cron JOb
-cron.schedule("*/1 * * * *", function () {
+// Cron JOb Scheduling
+cron.schedule("* * * * *", function () {
+
   // Running Task every 15 minutes
   let present = new Date();
+  present.setHours(15);
+  console.log("present : ", present);
   present.setHours(present.getHours() - 8);
+  console.log("present : ", present);
 
   Tickets.update({ expired: true }, {
     where: {
-      timming: { $gte: present }
+      timming: { [Op.lte]: present }
     }
   }).then(() => {
     console.log("Cron Finished.");

@@ -110,6 +110,8 @@ time.
 |*Book Ticket*|
 ![Search Tickets](./public/search.png)
 |*Search Tickets*|
+![8 Hours  Validity, Cron job Deletion](./public/cronDel.png)
+|*8 Hours  Expiration*|
 ![Update Ticket](./public/update.png)
 |*Update Ticket*|
 ![Get Ticket Details](./public/getDetails.png)

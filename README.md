@@ -21,8 +21,8 @@
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Database Schema](#database-schema)
+- [API Endpoints](#api-endpoints)
 - [Gallery](#gallery)
-- [Endpoints](#endpoints)
 - [Author](#author)
 
 
@@ -30,7 +30,7 @@
 
 ## About
 
-bespeak is a REST API o movie ticket booking interface for *Zomentum Hiring Challenge*. It is built using Node.js, the database used is SQLite, It is a fully documented API.
+bespeak is a REST API based movie ticket booking interface for *Zomentum Hiring Challenge*. It is built using `Node.js` and the database used is `SQLite`, It is a fully documented API.
 
 ## Description of the Problem Statement
 

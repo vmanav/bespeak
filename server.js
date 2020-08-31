@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+const cron = require("node-cron");
 
 const { db, Tickets } = require('./models/db');
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,6 +15,21 @@ app.get('/', (req, res) => {
   })
 })
 
+// schedule Cron JOb
+cron.schedule("*/1 * * * *", function () {
+  // Running Task every 15 minutes
+  let present = new Date();
+  present.setHours(present.getHours() - 8);
+
+  Tickets.update({ expired: true }, {
+    where: {
+      timming: { $gte: present }
+    }
+  }).then(() => {
+    console.log("Cron Finished.");
+  })
+
+});
 
 // Ticket Booking
 app.post('/tickets', (req, res) => {

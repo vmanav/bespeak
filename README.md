@@ -1,5 +1,5 @@
 <h1 align="center">bespeak</h1>
-<h4 align="center">Ticket Booking Interace</h4>
+<h4 align="center">Ticket Booking Interface</h4>
 <p>
 
 <p>
@@ -12,12 +12,25 @@
 </p>
 
 
+## Index
+
+- [Index](#index)
+- [About](#about)
+- [Description of the Problem Statement](#description-of-the-Problem-Statement)
+- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Database Schema](#database-schema)
+- [Gallery](#gallery)
+- [Endpoints](#endpoints)
+- [Author](#author)
+
+
 ### 🏠 [Homepage](https://github.com/vmanav/bespeak#readme)
 
 ## About
 
-bespeak is a REST API ticket booking interface for Zomentum Hiring Assignment.
-
+bespeak is a REST API o movie ticket booking interface for *Zomentum Hiring Challenge*. It is built using Node.js, the database used is SQLite, It is a fully documented API.
 
 ## Description of the Problem Statement
 
@@ -40,11 +53,6 @@ time.
 - Please attach a screenshot of your postman while testing your application.
 - Please avoid plagiarism.
 
-## Tech Stack Used :-
-
-- Node.js
-- SQLite
-
 
 ## Usage
 
@@ -55,7 +63,7 @@ time.
 ### Setup
 
 1. Fork the repository and clone it to your local machine.
-1. `cd` into the directory `bespeak` and, 
+1. `cd` into the directory `bespeak` 
 1. Install Dependencies with
     ```sh
     npm i
@@ -65,6 +73,15 @@ time.
     node server.js
 1. The interface will be live at http://localhost:3000.
 
+### Database Schema
+
+| Field | DataType  | AllowNull | Comments |
+| :---:   | :-: | :-: | :-: |
+| id | INTEGER  | NA | primaryKey |
+| name | STRING  | false | User Name |
+| number | STRING  | false | User Contact Number |
+| timming | DATE  | false | Show Timming |
+| expired | BOOLEAN  | false | Validity |
 
 <!-- 
 ## Gallery

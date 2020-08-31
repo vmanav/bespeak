@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 // Ticket Booking
 app.post('/tickets', (req, res) => {
 
-  // console.log("req.body : ", req.body);
+  console.log("req.body : ", req);
   const newTicket = {
     name: req.body.name,
     number: req.body.number,
@@ -57,17 +57,19 @@ app.post('/tickets', (req, res) => {
 // Update Ticket Timming 
 app.patch('/tickets/:id', (req, res) => {
 
+  console.log(req);
   let id = req.params.id;
   let newTimming = req.body.timming;
-  res.send({
-    "id": id,
-    "newTimming": newTimming
-  })
 
   Tickets.update({ timming: newTimming }, {
     where: {
       id: id
     }
+  }).then(() => {
+    res.send({
+      "text": "Ticket Updated Successfully.",
+      "status": 200
+    })
   });
 })
 

@@ -99,25 +99,24 @@ time.
 |*Get Ticket Details*|
 ![Delete Ticket](./public/del1.png)
 |*Delete Ticket*|
-<!-- 
+
+
 ## Gallery
 
-|![Landing Page](/public/landing.gif)|
+|![Home Page](/public/home.png)|
 |:-------:|
-|*Landing Page*|
-![Trending Blogs](./public/trending.png)
-|*Trending Blogs*|
-![Login Page](./public/login.gif)
-|*Login Page*|
-![BlogItOut Dashboard ](./public/dashboard.png)
-|*BlogItOut Dashboard*|
-![New Blog](./public/addNewBlog.png)
-|*New Blog*|
-![Search All Blogs](./public/searchAllBlogs.png)
-|*Search All Blogs*|
-![User Blogs](./public/userBlogs.png)
-|*User Blogs*|
--->
+|*Home Page*|
+![Book Ticket](./public/book.png)
+|*Book Ticket*|
+![Search Tickets](./public/search.png)
+|*Search Tickets*|
+![Update Ticket](./public/update.png)
+|*Update Ticket*|
+![Get Ticket Details](./public/getDetails.png)
+|*Get Ticket Details*|
+![Delete Ticket](./public/delTicket.png)
+|*Delete Ticket*|
+
 
 
 ## Author
